@@ -1,0 +1,51 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: SecretSantaTelegramBot
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/secret-santa-db
+    username: doda
+    password: doda
+    hikari:
+      schema: ${db.schemaName}
+      idle-timeout: 120000
+      max-lifetime: 300000
+
+  liquibase:
+    enabled: true
+    default-schema: ${db.schemaName}
+
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: ${db.schemaName}
+
+db:
+  schemaName: secretsantabot
+
+bot:
+  username: DodaSecretSantaBot
+  token: ENTER_YOUR_TOKEN
+
+cache:
+  users:
+    max_size: 1000
+    refresh_after_write_duration: 7200 # seconds
+    expire_after_write_duration: 86400 # seconds
+
+options:
+  room:
+    min_length_name: 4
+    max_length_name: 30
+    min_count_users: 3
+    max_count_users: 20

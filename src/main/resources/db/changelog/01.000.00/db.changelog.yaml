@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - include:
+      file: users.sql
+      relativeToChangelogFile: true
+  - include:
+      file: rooms.sql
+      relativeToChangelogFile: true
+  - include:
+      file: users_room.sql
+      relativeToChangelogFile: true
+  - include:
+      file: gift_assignments.sql
+      relativeToChangelogFile: true
+  - changeSet:
+      id: 01.000.00
+      author: Vadim_Miller
+      logicalFilePath: 01.000.00/db.changelog.yaml
+      changes:
+        - tagDatabase:
+            tag: 01.000.00
