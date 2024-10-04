@@ -55,4 +55,8 @@ public class Validator {
     public boolean validateArguments(String[] args, int trueCountArgs) {
         return args.length >= trueCountArgs;
     }
+
+    public boolean validateStartHello(String[] startMessage) {
+        return startMessage[1].equals("hello");
+    }
 }

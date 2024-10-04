@@ -110,7 +110,8 @@ public class UpdateReceiver {
     }
 
     private Handler getStartHandler(String command) {
-        if (validator.validateArguments(splitCommand(command), 2)) {
+        String[] commandArgs = splitCommand(command);
+        if (validator.validateArguments(commandArgs, 2) && !validator.validateStartHello(commandArgs)) {
             return getHandlerByClass(StartAndJoinRoomHandler.class);
         }
         else {

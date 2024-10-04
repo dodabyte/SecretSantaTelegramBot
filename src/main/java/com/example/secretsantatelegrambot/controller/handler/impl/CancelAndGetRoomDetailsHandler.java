@@ -48,7 +48,7 @@ public class CancelAndGetRoomDetailsHandler implements Handler {
             throw new IllegalArgumentException();
         }
 
-        UUID roomId = getRoomIdFromText(chatId, args[1]);
+        UUID roomId = getRoomIdFromText(args[1]);
         boolean isNewMessage = Boolean.parseBoolean(splitCommand(message)[2]);
 
         Room room = roomService.getRoomByRoomId(roomId, chatId);

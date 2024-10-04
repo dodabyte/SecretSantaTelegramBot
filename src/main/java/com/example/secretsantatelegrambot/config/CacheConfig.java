@@ -2,7 +2,6 @@ package com.example.secretsantatelegrambot.config;
 
 
 import com.example.secretsantatelegrambot.entity.User;
-import com.example.secretsantatelegrambot.service.UserService;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import lombok.RequiredArgsConstructor;

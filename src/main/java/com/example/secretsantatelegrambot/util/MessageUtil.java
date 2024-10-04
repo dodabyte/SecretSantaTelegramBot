@@ -6,10 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MessageUtil {
-    public static final String BOT_URL = """
-            https://t\\.me/DodaSecretSantaBot?start\\=%s
-            """;
-
     private static final String START_MESSAGE = """
            Добро пожаловать, @%s\\. Я бот Secret Santa и я помогу устроить Тебе и Твоим близким весёлый праздник\\!
            
@@ -88,7 +84,7 @@ public class MessageUtil {
 
     public static final String ROOM_DETAILS_MESSAGE = """
             *Комната:* «%s»
-            *Ссылка для приглашения:* %s
+            *Ссылка для приглашения:* https://t\\.me/DodaSecretSantaBot?start\\=%s
             
             *Мин\\. кол\\-во участников:* %s
             *Макс\\. кол\\-во участников:* %s
@@ -168,7 +164,7 @@ public class MessageUtil {
     public static String createRoomDetailsMessage(Room room) {
         return ROOM_DETAILS_MESSAGE.formatted(
                 escape(room.getName()),
-                BOT_URL.formatted(escape(room.getId().toString())),
+                escape(room.getId().toString()),
                 room.getMinCountUsers(),
                 room.getMaxCountUsers(),
                 escape(room.getMinCostGift().toString()),
