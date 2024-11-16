@@ -3,21 +3,22 @@ server:
 
 spring:
   application:
-    name: SecretSantaTelegramBot
+    name: ${APPLICATION_NAME}
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/secret-santa-db
-    username: doda
-    password: doda
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
     hikari:
-      schema: ${db.schemaName}
+      schema: ${database.schema.name}
       idle-timeout: 120000
       max-lifetime: 300000
 
   liquibase:
     enabled: true
-    default-schema: ${db.schemaName}
+    default-schema: ${database.schema.name}
+    liquibase-schema: ${database.schema.name}
 
   jpa:
     database: postgresql
@@ -28,14 +29,15 @@ spring:
       ddl-auto: validate
     properties:
       hibernate:
-        default_schema: ${db.schemaName}
+        default_schema: ${database.schema.name}
 
-db:
-  schemaName: secretsantabot
+database:
+  schema:
+    name: ${DATABASE_SCHEMA_NAME}
 
 bot:
-  username: DodaSecretSantaBot
-  token: ENTER_YOUR_TOKEN
+  username: ${BOT_USERNAME}
+  token: ${BOT_TOKEN}
 
 cache:
   users:

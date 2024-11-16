@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Other ###
+deploy
+jpg
+application-*
+Dockerfile

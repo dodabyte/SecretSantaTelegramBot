@@ -70,9 +70,10 @@ public class RoomServiceImpl implements RoomService {
 
     @Override
     @Transactional
-    public Room joinRoom(User user, UUID roomId) {
-        Long chatId = user.getChatId();
+    public Room joinRoom(User oldUser, UUID roomId) {
+        Long chatId = oldUser.getChatId();
         Room room = getRoomByRoomId(roomId, chatId);
+        User user = userService.findByChatId(chatId);
 
         if (validator.validateUserInRoom(user, room)) {
             throw new UserAlreadyInRoomException();
@@ -85,6 +86,9 @@ public class RoomServiceImpl implements RoomService {
         giftAssignmentService.clearAssignmentsInRoom(room);
 
         room.getUsers().add(user);
+        if (user.getRooms() == null) {
+            user.setRooms(new HashSet<>());
+        }
         user.getRooms().add(room);
 
         userRepository.save(user);
